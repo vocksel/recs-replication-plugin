@@ -1,6 +1,11 @@
-return {
+local replicate = {
 	shouldReplicate = false,
-	callback = function()
-
-	end,
 }
+
+function replicate.callback(func)
+	replicate.shouldReplicate = true
+	func()
+	replicate.shouldReplicate = false
+end
+
+return replicate
