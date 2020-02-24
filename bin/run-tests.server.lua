@@ -4,11 +4,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local isRobloxCli, ProcessService = pcall(game.GetService, game, "ProcessService")
 
 local TestEZ = require(ReplicatedStorage.TestEZ)
+local t = require(ReplicatedStorage.t)
 
 TestEZ.Expectation.extend({
-	typedAs = function(value, tFunction)
-		local pass, message = tFunction(value)
-		if tFunction then
+	interface = function(value, tFunction)
+		local tValue = tFunction(t)
+		local pass, message = tValue(value)
+		if pass then
 			return {
 				pass = pass,
 				message = tostring(message),

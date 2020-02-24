@@ -28,6 +28,9 @@
 					},
 					"lemur": {
 						"$path": "modules/lemur/lib"
+					},
+					"t": {
+						"$path": "modules/t/lib"
 					}
 				}
 			}

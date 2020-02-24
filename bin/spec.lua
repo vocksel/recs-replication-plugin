@@ -6,6 +6,7 @@
 local LOAD_MODULES = {
 	{"src", "Source"},
 	{"modules/TestEZ/src", "TestEZ"},
+	{"modules/t/lib", "t"},
 }
 
 -- This makes sure we can load Lemur and other libraries that depend on init.lua
