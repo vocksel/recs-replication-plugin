@@ -1,3 +1,6 @@
-return function()
+return {
+	shouldReplicate = false,
+	callback = function()
 
-end
+	end,
+}

@@ -3,12 +3,14 @@ local createClientPlugin = require(script.createClientPlugin)
 local replicate = require(script.replicate)
 local replicatePastChanges = require(script.replicatePastChanges)
 
+local remoteEvent = script:FindFirstChildOfClass("RemoteEvent")
+
 return {
 	plugin = {
-		server = createServerPlugin,
-		client = createClientPlugin,
+		server = createServerPlugin(remoteEvent),
+		client = createClientPlugin(remoteEvent),
 	},
 
-	replicate = replicate,
-	replicatePastChanges = replicatePastChanges,
+	replicate = replicate.callback,
+	replicatePastChanges = replicatePastChanges(remoteEvent),
 }
