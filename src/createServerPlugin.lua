@@ -1,20 +1,11 @@
 local ActionType = require(script.Parent.ActionType)
 local replicate = require(script.Parent.replicate)
-
-local function createAction(actionType, payload)
-	return {
-		type = actionType,
-		payload = payload,
-	}
-end
+local createAction = require(script.Parent.createAction)
+local history = require(script.Parent.history)
 
 return function(remoteEvent)
 	return function()
 		local plugin = {}
-
-		-- Keeps track of all the actions that were performed so they can be played
-		-- back on new clients.
-		local history = {}
 
 		function plugin:componentAdded(core, entity, component)
 			-- TODO: Pass in the props that a component was added with when

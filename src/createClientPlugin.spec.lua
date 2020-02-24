@@ -1,34 +1,6 @@
 return function()
 	local ActionType = require(script.Parent.ActionType)
-
-	local function createFunctionWithSpy()
-		local lastCalls = {}
-		return {
-			callback = function(...)
-				table.insert(lastCalls, { ... })
-			end,
-			getNumberOfCalls = function()
-				return #lastCalls
-			end,
-			expectToBeCalledWith = function(...)
-				local lastCall = lastCalls[#lastCalls]
-				assert(lastCall, "was never called")
-
-				local expectedParams = { ... }
-				for index, expectedValue in ipairs(expectedParams) do
-					assert(lastCall[index] == expectedValue, string.format(
-						"Expected %s for arg # %s. Got %s instead",
-						tostring(expectedValue),
-						index,
-						tostring(lastCall[index])
-					))
-				end
-			end,
-			clear = function()
-				lastCalls = {}
-			end,
-		}
-	end
+	local createSpy = require(script.Parent.createSpy)
 
 	local function clearSpies(arrayOfSpies)
 		for _, spy in ipairs(arrayOfSpies) do
@@ -85,9 +57,9 @@ return function()
 					end)
 
 					describe("GIVEN a core", function()
-						local addComponentSpy = createFunctionWithSpy()
-						local removeComponentSpy = createFunctionWithSpy()
-						local addSingletonSpy = createFunctionWithSpy()
+						local addComponentSpy = createSpy()
+						local removeComponentSpy = createSpy()
+						local addSingletonSpy = createSpy()
 						local core = {
 							addComponent = addComponentSpy.callback,
 							removeComponent = removeComponentSpy.callback,
