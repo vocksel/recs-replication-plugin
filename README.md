@@ -76,7 +76,8 @@ Replicates all of the past changes to this Player. This is used for catching up 
 
 #### Example
 ```lua
-game:GetService("Players").PlayerAdded:Connect(Replication.replicatePastChanges)
+local Players = game:GetService("Players")
+Players.PlayerAdded:Connect(Replication.replicatePastChanges)
 ```
 
 All changes are saved, so when the new Player joins they playback all the changes that were made.
