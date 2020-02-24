@@ -1,6 +1,6 @@
 return function()
 	local ActionType = require(script.Parent.ActionType)
-	local createSpy = require(script.Parent.createSpy)
+	local createSpy = require(script.Parent.Parent.Tests.createSpy)
 
 	local function clearSpies(arrayOfSpies)
 		for _, spy in ipairs(arrayOfSpies) do

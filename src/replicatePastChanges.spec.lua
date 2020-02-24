@@ -1,6 +1,6 @@
 return function()
 	local ActionType = require(script.Parent.ActionType)
-	local createSpy = require(script.Parent.createSpy)
+	local createSpy = require(script.Parent.Parent.Tests.createSpy)
 
 	describe("WHEN required", function()
 		local replicatePastChanges = require(script.Parent.replicatePastChanges)

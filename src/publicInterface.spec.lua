@@ -4,15 +4,24 @@ return function()
 
 		it("SHOULD have the following interface", function()
 			expect(api).to.have.interface(function(t)
-				return t.interface({
-					plugin = t.interface({
-						server = t.callback,
-						client = t.callback,
-					}),
+				return t.callback
+			end)
+		end)
 
-					replicate = t.callback,
-					replicatePastChanges = t.callback,
-				})
+		describe("WHEN invoked", function()
+			local apiInstance = api()
+			it("SHOULD have the following interface", function()
+				expect(apiInstance).to.have.interface(function(t)
+					return t.interface({
+						plugin = t.interface({
+							server = t.callback,
+							client = t.callback,
+						}),
+
+						replicate = t.callback,
+						replicatePastChanges = t.callback,
+					})
+				end)
 			end)
 		end)
 	end)

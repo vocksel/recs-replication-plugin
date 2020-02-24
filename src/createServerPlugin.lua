@@ -1,9 +1,10 @@
 local ActionType = require(script.Parent.ActionType)
 local replicate = require(script.Parent.replicate)
 local createAction = require(script.Parent.createAction)
-local history = require(script.Parent.history)
 
-return function(remoteEvent)
+return function(remoteEvent, history)
+	history = history or {}
+
 	return function()
 		local plugin = {}
 

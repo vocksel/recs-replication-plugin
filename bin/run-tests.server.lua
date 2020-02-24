@@ -24,7 +24,10 @@ TestEZ.Expectation.extend({
 	end,
 })
 
-local results = TestEZ.TestBootstrap:run({ReplicatedStorage.Source}, TestEZ.Reporters.TextReporterQuiet)
+local results = TestEZ.TestBootstrap:run({
+	ReplicatedStorage.Source,
+	ReplicatedStorage.Tests,
+}, TestEZ.Reporters.TextReporterQuiet)
 
 local statusCode = results.failureCount == 0 and 0 or 1
 
