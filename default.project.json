@@ -1,5 +1,5 @@
 {
-	"name": "starchild",
+	"name": "RECS-ReplicationPlugin",
 	"tree": {
 		"$className": "DataModel",
 
@@ -13,8 +13,23 @@
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
 
-			"ReplicationPlugin": {
-				"$path": "src"
+			"Packages": {
+				"$className": "Folder",
+
+				"ReplicationPlugin": {
+					"$path": "src"
+				},
+
+				"Dev": {
+					"$className": "Folder",
+
+					"TestEZ": {
+						"$path": "modules/TestEZ/src"
+					},
+					"lemur": {
+						"$path": "modules/lemur/lib"
+					}
+				}
 			}
 		}
 	}
