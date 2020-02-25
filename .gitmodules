@@ -1,0 +1,10 @@
+[submodule "modules/TestEZ"]
+	path = modules/TestEZ
+	url = https://github.com/benbrimeyer/TestEZ
+	branch = extend-expect
+[submodule "modules/lemur"]
+	path = modules/lemur
+	url = https://github.com/LPGhatguy/lemur
+[submodule "modules/t"]
+	path = modules/t
+	url = https://github.com/osyrisrblx/t
