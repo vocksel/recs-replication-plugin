@@ -23,6 +23,18 @@ return function(remoteEvent, history)
 			end
 		end
 
+		function plugin:componentStateSet(core, entity, component)
+			if replicate.shouldReplicate then
+				local action = createAction(ActionType.SetStateComponent, {
+					entity = entity,
+					component = component
+				})
+
+				table.insert(history, action)
+				remoteEvent:FireAllClients(action)
+			end
+		end
+
 		function plugin:componentRemoving(core, entity, component)
 			if replicate.shouldReplicate then
 				local action = createAction(ActionType.RemoveComponent, {
