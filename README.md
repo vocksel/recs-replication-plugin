@@ -47,6 +47,7 @@ Any calls to a Recs method in this function will replicate to all other players.
 The following calls are supported with this method:
 - Core:addComponent
 	- *The third argument, props, is not yet properly replicated.*
+- Core:setStateComponent
 - Core:removeComponent
 - Core:addSingleton
 
