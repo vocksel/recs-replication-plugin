@@ -8,14 +8,12 @@ return function(remoteEvent, history)
 	return function()
 		local plugin = {}
 
-		function plugin:componentAdded(core, entity, component)
-			-- TODO: Pass in the props that a component was added with when
-			-- replicating.
-
+		function plugin:componentAdded(core, entity, component, props)
 			if replicate.shouldReplicate then
 				local action = createAction(ActionType.AddComponent, {
 					entity = entity,
-					componentIdentifier = component.className
+					componentIdentifier = component.className,
+					props = props
 				})
 
 				table.insert(history, action)

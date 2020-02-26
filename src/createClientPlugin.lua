@@ -9,7 +9,7 @@ return function(remoteEvent)
 				local payload = action.payload
 
 				if action.type == ActionType.AddComponent then
-					core:addComponent(payload.entity, payload.componentIdentifier)
+					core:addComponent(payload.entity, payload.componentIdentifier, payload.props)
 				elseif action.type == ActionType.RemoveComponent then
 					core:removeComponent(payload.entity, payload.componentIdentifier)
 				elseif action.type == ActionType.AddSingleton then

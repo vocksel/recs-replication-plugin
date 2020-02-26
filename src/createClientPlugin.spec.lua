@@ -87,6 +87,7 @@ return function()
 									payload = {
 										entity = "entity",
 										componentIdentifier = "componentIdentifier",
+										props = "props",
 									},
 								}
 								describe("WHEN OnClientEvent is fired", function()
@@ -94,7 +95,7 @@ return function()
 										fireOnClientEvent(action)
 
 										expect(addComponentSpy.getNumberOfCalls()).to.equal(1)
-										addComponentSpy.expectToBeCalledWith(core, "entity", "componentIdentifier")
+										addComponentSpy.expectToBeCalledWith(core, "entity", "componentIdentifier", "props")
 									end)
 								end)
 							end)
