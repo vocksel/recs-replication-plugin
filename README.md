@@ -59,6 +59,12 @@ Replication.replicate(function()
 end)
 
 Replication.replicate(function()
+	core:setStateComponent(entity, "Foo", {
+		x = 100,
+	})
+end)
+
+Replication.replicate(function()
 	core:removeComponent(entity, "Foo")
 end)
 
