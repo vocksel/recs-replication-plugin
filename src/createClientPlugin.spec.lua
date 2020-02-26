@@ -58,10 +58,12 @@ return function()
 
 					describe("GIVEN a core", function()
 						local addComponentSpy = createSpy()
+						local setStateComponentSpy = createSpy()
 						local removeComponentSpy = createSpy()
 						local addSingletonSpy = createSpy()
 						local core = {
 							addComponent = addComponentSpy.callback,
+							setStateComponent = setStateComponentSpy.callback,
 							removeComponent = removeComponentSpy.callback,
 							addSingleton = addSingletonSpy.callback,
 						}
@@ -69,6 +71,7 @@ return function()
 						beforeEach(function()
 							clearSpies({
 								addComponentSpy,
+								setStateComponentSpy,
 								removeComponentSpy,
 								addSingletonSpy,
 							})
@@ -95,6 +98,24 @@ return function()
 
 										expect(addComponentSpy.getNumberOfCalls()).to.equal(1)
 										addComponentSpy.expectToBeCalledWith(core, "entity", "componentIdentifier")
+									end)
+								end)
+							end)
+
+							describe("GIVEN an action with type SetStateComponent", function()
+								local action = {
+									type = ActionType.SetStateComponent,
+									payload = {
+										entity = "entity",
+										component = "component",
+									},
+								}
+								describe("WHEN OnClientEvent is fired", function()
+									it("SHOULD locally setStateComponent", function()
+										fireOnClientEvent(action)
+
+										expect(setStateComponentSpy.getNumberOfCalls()).to.equal(1)
+										setStateComponentSpy.expectToBeCalledWith(core, "entity", "component")
 									end)
 								end)
 							end)
