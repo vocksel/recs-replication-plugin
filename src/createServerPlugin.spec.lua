@@ -69,10 +69,11 @@ return function()
 							local core = nil
 							local entity = "foo"
 							local component = createComponent("bar")
+							local props = {}
 
 							describe("WHEN componentAdded is invoked", function()
 								it("SHOULD invoke FireAllClients with the expected action", function()
-									plugin:componentAdded(core, entity, component)
+									plugin:componentAdded(core, entity, component, props)
 
 									local action = readLatestFireAllClients()
 									expect(action).to.be.ok()
@@ -80,6 +81,7 @@ return function()
 									expect(action.payload).to.be.a("table")
 									expect(action.payload.entity).to.equal(entity)
 									expect(action.payload.componentIdentifier).to.equal(component.className)
+									expect(action.payload.props).to.equal(props)
 								end)
 							end)
 
